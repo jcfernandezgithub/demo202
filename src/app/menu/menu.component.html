@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+<div class="container-fluid h-100" id="wrapper">
+  <div class="row" style="height: 100%;">
+    <div class="col-2 p-0 bg-light h-100" style="height: 100%;">
+      <!-- Sidebar -->
+      <app-sidebar></app-sidebar>
+      <!-- /#sidebar-wrapper -->
+    </div>
+
+    <!-- Page Content -->
+    <div class="col-10 p-0" id="page-content-wrapper">
+
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+  </div>
+
+</div>
