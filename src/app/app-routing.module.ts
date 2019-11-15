@@ -6,7 +6,6 @@ import { UserComponent } from './pages/user/user.component';
 import { ResetComponent } from './pages/reset/reset.component';
 import { AuthComponent } from './auth/auth.component';
 
-
 const routes: Routes = [
   {
     path: '',
