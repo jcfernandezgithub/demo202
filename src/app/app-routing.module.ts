@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminComponent } from './pages/admin/admin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { UserComponent } from './pages/user/user.component';
+import { ResetComponent } from './pages/reset/reset.component';
 
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/menu/user',
+    pathMatch: 'full'
+  },
+  {
     path: 'menu',
     component: MenuComponent,
     children: [
-      {
-        path: 'admin',
-        component: AdminComponent
-      },
       {
         path: 'user',
         component: UserComponent
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'reset',
+    component: ResetComponent
   }
 ];
 

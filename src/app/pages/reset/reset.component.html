@@ -1,0 +1,44 @@
+<div class="container-fluid h-100">
+    <div class="row justify-content-center h-100">
+
+      <div class="col-md-8 bg-dark h-100 my-auto side">
+        <h5 class="text-white mt-2">app.com</h5>
+      </div>
+
+      <div class="col-md-4 col-sm-12 col-xs-12 my-auto">
+        <div class="card" style="width:350px;border: none; margin: 0 auto;">
+          <div class="card-body">
+            <h5 class="card-title">Reset password,</h5>
+            <h6 class="card-subtitle mb-2 text-muted" style="width:200px;">Use your registered email account, to login.
+            </h6>
+
+            <form [formGroup]="form">
+              <div class="input-group">
+                <input class="form-control py-2 rounded-0 border-right-0 border" (keyup)="check()" formControlName="email"
+                  placeholder="example@domain.com" type="input">
+                <span class="input-group-append">
+                  <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i class="fas fa-user"></i></div>
+                </span>
+              </div>
+              <small>{{email_exists.message}}</small>
+
+              <div class="text-right">
+                <button (click)="reset(form.value)" [disabled]="(!email_exists.success)" type="submit" class="btn pt-0 pb-0"> <strong>Reset </strong>
+                  <div class="spinner-border spinner-border-sm" [hidden]="spinner" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </button>
+              </div>
+
+              <div class="text-center">
+                <small>Have an account. <a href="" routerLink="/login">Login.</a></small>
+                <br>
+                <small>No account yet? Register.</small>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,1 +1,52 @@
-<p>user works!</p>
+<h3 class="lean mt-3">Administration</h3>
+
+<hr>
+
+<h5 class="lean">Users</h5>
+
+<div class="col-md-12 col-sm-12 p-0">
+
+
+  <div class="row">
+    <div class="col">
+      <div class="input-group mb-2 pull-right" style="width:250px;">
+        <input class="form-control py-2 rounded-0 border-right-0 border" placeholder="example@domain.com" type="input">
+        <span class="input-group-append">
+          <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i class="fas fa-search"></i></div>
+        </span>
+      </div>
+    </div>
+    <div class="col align-self-center text-right">
+      <button class="btn btn-sm">Create new user</button>
+    </div>
+  </div>
+
+
+  <table class="table table-sm table-striped table-bordered">
+    <thead class="thead-dark">
+      <th scope="col">Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Verified</th>
+      <th scope="col">Actions</th>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.name}}</td>
+        <td>{{user.last_name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.role}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.verified == true ? 'Yes' : 'No'}}</td>
+        <td>
+          <button class="btn btn-sm pl-0 pr-0">View</button> |
+          <button class="btn btn-sm pl-0 pr-0">Edit</button> |
+          <button class="btn btn-sm pl-0 pr-0" style="color:red;">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
