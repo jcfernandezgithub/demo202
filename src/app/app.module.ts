@@ -15,8 +15,6 @@ import { MenuComponent } from './menu/menu.component';
 import { UserComponent } from './pages/user/user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ResetComponent } from './pages/reset/reset.component';
-import { AuthComponent } from './auth/auth.component';
-
 
 
 @NgModule({
@@ -27,8 +25,7 @@ import { AuthComponent } from './auth/auth.component';
     SidebarComponent,
     MenuComponent,
     UserComponent,
-    ResetComponent,
-    AuthComponent
+    ResetComponent
   ],
   imports: [
     BrowserModule,

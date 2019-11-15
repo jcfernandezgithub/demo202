@@ -4,7 +4,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { UserComponent } from './pages/user/user.component';
 import { ResetComponent } from './pages/reset/reset.component';
-import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   {
@@ -13,30 +12,17 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'menu',
-    component: MenuComponent,
-    children: [
-      {
-        path: 'user',
-        component: UserComponent
-      }
-    ]
+    path: 'menu/user',
+    component: UserComponent,
   },
   {
-    path: 'auth',
-    component: AuthComponent,
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: 'reset',
-        component: ResetComponent
-      }
-    ]
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'reset',
+    component: ResetComponent
   }
-
 ];
 
 @NgModule({
