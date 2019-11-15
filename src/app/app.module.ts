@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminComponent } from './pages/admin/admin.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -22,7 +21,6 @@ import { ResetComponent } from './pages/reset/reset.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent,
     NavbarComponent,
     LoginComponent,
     SidebarComponent,

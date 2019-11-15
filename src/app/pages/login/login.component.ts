@@ -5,6 +5,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as _ from "lodash";
 import { ToastrService } from 'ngx-toastr';
 
+export interface check_email {
+  success: Boolean,
+  message: String
+}
+
 
 @Component({
   selector: 'app-login',
@@ -16,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   spinner: boolean = true;
   form: FormGroup;
-  email_exists: Object = {
+  email_exists: check_email = {
     success: false,
     message: 'Provide valid email'
   };
@@ -53,10 +58,10 @@ export class LoginComponent implements OnInit {
 
   public check_email(email) {
     this.auth.check(email).subscribe(response => {
-      this.email_exists = response;
+      this.email_exists = response as check_email;
       console.log(response['success']);
     }, e => {
-      this.email_exists = e.error;
+      this.email_exists = e.error as check_email;
       console.log(this.email_exists)
     });
   }

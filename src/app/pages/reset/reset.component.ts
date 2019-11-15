@@ -4,6 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+export interface check_email {
+  success: Boolean,
+  message: String
+}
 @Component({
   selector: 'app-reset',
   templateUrl: './reset.component.html',
@@ -15,7 +19,7 @@ export class ResetComponent implements OnInit {
 
   form: FormGroup;
 
-  email_exists: Object = {
+  email_exists: check_email = {
     success: false,
     message: 'Provide valid email'
   };
@@ -49,9 +53,9 @@ export class ResetComponent implements OnInit {
 
   public check_email(email) {
     this.auth.check(email).subscribe(response => {
-      this.email_exists = response;
+      this.email_exists = response as check_email;
     }, e => {
-      this.email_exists = e.error;
+      this.email_exists = e.error as check_email;
     });
   }
 
