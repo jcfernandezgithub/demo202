@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { UserComponent } from './pages/user/user.component';
 import { ResetComponent } from './pages/reset/reset.component';
+import { AuthComponent } from './auth/auth.component';
 
 
 const routes: Routes = [
@@ -23,13 +24,20 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'reset',
-    component: ResetComponent
+    path: 'auth',
+    component: AuthComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'reset',
+        component: ResetComponent
+      }
+    ]
   }
+
 ];
 
 @NgModule({

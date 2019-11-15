@@ -15,6 +15,7 @@ import { MenuComponent } from './menu/menu.component';
 import { UserComponent } from './pages/user/user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ResetComponent } from './pages/reset/reset.component';
+import { AuthComponent } from './auth/auth.component';
 
 
 
@@ -26,7 +27,8 @@ import { ResetComponent } from './pages/reset/reset.component';
     SidebarComponent,
     MenuComponent,
     UserComponent,
-    ResetComponent
+    ResetComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
