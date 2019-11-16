@@ -12,15 +12,15 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '/menu/user',
+    path: 'menu/user',
     component: UserComponent,
   },
   {
-    path: '/login',
+    path: 'login',
     component: LoginComponent
   },
   {
-    path: '/reset',
+    path: 'reset',
     component: ResetComponent
   }
 ];
