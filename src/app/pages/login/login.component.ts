@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     const session = await this.auth.signin(form);
     session.subscribe(response => {
       sessionStorage.setItem('session', JSON.stringify(response));
-      this.router.navigate(['menu/admin']);
+      this.router.navigate(['menu/user']);
       this.hide_spinner();
     }, e => {
       this.showError(e.error.message)
