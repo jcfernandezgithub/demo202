@@ -12,8 +12,14 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'menu/user',
-    component: UserComponent,
+    path: 'menu',
+    component: MenuComponent,
+    children: [
+      {
+        path: 'user',
+        component: UserComponent
+      }
+    ]
   },
   {
     path: 'login',
