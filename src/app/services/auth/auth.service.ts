@@ -27,4 +27,21 @@ export class AuthService {
   public signout() {
     return sessionStorage.removeItem('session');
   }
+
+  public loggedIn(): boolean {
+
+    const session = sessionStorage.getItem('session');
+
+    if(!session) {
+      return false;
+    }
+
+    return true;
+  }
+
+  public token() {
+    const session = JSON.parse(sessionStorage.getItem('session'));
+
+    return session.token;
+  }
 }

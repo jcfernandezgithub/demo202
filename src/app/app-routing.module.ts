@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { UserComponent } from './pages/user/user.component';
 import { ResetComponent } from './pages/reset/reset.component';
+import { ServiceGuard } from './services/guard/service.guard';
 
 const routes: Routes = [
   {
@@ -12,12 +13,19 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'menu/',
+    redirectTo: '/menu/user',
+    pathMatch: 'full'
+  },
+  {
     path: 'menu',
     component: MenuComponent,
+    canActivate: [ServiceGuard],
     children: [
       {
         path: 'user',
-        component: UserComponent
+        component: UserComponent,
+        canActivate: [ServiceGuard]
       }
     ]
   },
@@ -35,4 +43,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

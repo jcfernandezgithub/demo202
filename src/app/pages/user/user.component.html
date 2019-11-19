@@ -17,13 +17,14 @@
       </div>
     </div>
     <div class="col align-self-center text-right">
-      <button class="btn btn-sm">Create new user</button>
+      <button class="btn btn-sm" data-toggle="modal" data-target="#create-new-user">Create new user</button>
     </div>
   </div>
 
 
   <table class="table table-sm table-striped table-bordered">
     <thead class="thead-dark">
+      <th scope="col">Username</th>
       <th scope="col">Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
@@ -35,6 +36,7 @@
 
     <tbody>
       <tr *ngFor="let user of users">
+        <td>{{user.username}}</td>
         <td>{{user.name}}</td>
         <td>{{user.last_name}}</td>
         <td>{{user.email}}</td>
@@ -44,9 +46,106 @@
         <td>
           <button class="btn btn-sm pl-0 pr-0">View</button> |
           <button class="btn btn-sm pl-0 pr-0">Edit</button> |
-          <button class="btn btn-sm pl-0 pr-0" style="color:red;">Remove</button>
+          <button class="btn btn-sm pl-0 pr-0" style="color:red;" (click)="remove(user.username)">Remove</button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+
+<!-- Create user modal start -->
+<div class="modal fade" id="create-new-user" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content rounded-0">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Create new user</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+
+        <div class="row">
+          <div class="col-6">
+            <div class="input-group mb-2">
+              <input class="form-control py-2 rounded-0 border-right-0 border" placeholder="Name" type="input">
+              <span class="input-group-append">
+                <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i class="fas fa-user"></i></div>
+              </span>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-2">
+              <input class="form-control py-2 rounded-0 border-right-0 border" placeholder="Last Name" type="text">
+              <span class="input-group-append">
+                <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i class="fas fa-user"></i></div>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="input-group mb-2">
+              <input class="form-control py-2 rounded-0 border-right-0 border" placeholder="Username" type="input"
+                id="username">
+              <span class="input-group-append">
+                <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i class="fas fa-user"></i></div>
+              </span>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-2">
+              <input class="form-control py-2 rounded-0 border-right-0 border" placeholder="Password" type="Password">
+              <span class="input-group-append">
+                <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i class="fas fa-user"></i></div>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="input-group mb-2">
+              <input class="form-control py-2 rounded-0 border-right-0 border" placeholder="email@example.com"
+                type="input">
+              <span class="input-group-append">
+                <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i class="fas fa-user"></i></div>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="input-group mb-3">
+              <select class="custom-select rounded-0" id="inputGroupSelect02">
+                <option selected>Role</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+              <div class="input-group-append">
+                <label class="input-group-text rounded-0" for="inputGroupSelect02">Options</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-sm">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Create user modal ends -->

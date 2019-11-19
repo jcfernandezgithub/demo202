@@ -12,7 +12,11 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  list() {
-    return this.http.get(`${this.endpoint}/api/user/list`, { headers: { "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGJkZjc0YWM0ZDAxODE2NDU1MjQxMGQiLCJleHBpcmUiOiIyMDE5LTExLTE5VDE3OjA3OjMxLjk5NFoiLCJpYXQiOjE1NzM1Nzg0NTF9.6FUIndZdXjxwBfhCFBa32Rxegl-X5K4qBAY2AS395Ys" } });
+  public list() {
+    return this.http.get(`${this.endpoint}/api/user/list`);
+  }
+
+  public remove(id) {
+    return this.http.delete(`${this.endpoint}/api/user/${id}/delete`);
   }
 }
