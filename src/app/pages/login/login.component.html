@@ -15,7 +15,7 @@
           <form [formGroup]="form">
             <div class="input-group mb-2">
               <input class="form-control py-2 rounded-0 border-right-0 border" (keyup)="check()" formControlName="email"
-                placeholder="example@domain.com" type="input">
+                placeholder="example@domain.com" [ngClass]="{ 'is-valid' : email_exists.success}" type="input">
               <span class="input-group-append">
                 <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i class="fas fa-user"></i></div>
               </span>
@@ -33,7 +33,7 @@
             <small>{{email_exists.message}}</small>
 
             <div class="text-right">
-              <button (click)="signin(form.value)" [disabled]="!form.valid" type="submit" class="btn pt-0 pb-0"> <strong>Login </strong>
+              <button (click)="signin(form.value)" [disabled]="!email_exists.success || !form.valid" type="submit" class="btn pt-0 pb-0"> <strong>Login </strong>
                 <div class="spinner-border spinner-border-sm" [hidden]="spinner" role="status">
                   <span class="sr-only">Loading...</span>
                 </div>

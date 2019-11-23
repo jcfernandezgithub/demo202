@@ -55,8 +55,7 @@
 
 
 <!-- Create user modal start -->
-<div class="modal fade" id="create-new-user" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
+<div class="modal fade" id="create-new-user" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content rounded-0">
 
@@ -69,73 +68,83 @@
       </div>
 
       <!-- Modal Body -->
-      <div class="modal-body">
+      <div class="modal-body" [formGroup]="form">
 
         <div class="row">
+
           <div class="col-6">
+            <small for="">Name</small>
             <div class="input-group mb-2">
-              <input class="form-control py-2 rounded-0 border-right-0 border" placeholder="Name" type="input">
-              <span class="input-group-append">
-                <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i class="fas fa-user"></i></div>
-              </span>
+              <input formControlName="name" class="form-control py-2 rounded-0 border" placeholder="Name" type="input">
             </div>
           </div>
+
           <div class="col-6">
+            <small for="">Last name</small>
             <div class="input-group mb-2">
-              <input class="form-control py-2 rounded-0 border-right-0 border" placeholder="Last Name" type="text">
-              <span class="input-group-append">
-                <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i class="fas fa-user"></i></div>
-              </span>
+              <input formControlName="last_name" class="form-control py-2 rounded-0 border" placeholder="Last Name"
+                type="text">
             </div>
           </div>
+
         </div>
 
         <div class="row">
+
           <div class="col-6">
+            <small for="">Username</small>
             <div class="input-group mb-2">
-              <input class="form-control py-2 rounded-0 border-right-0 border" placeholder="Username" type="input"
+              <input formControlName="username" class="form-control py-2 rounded-0 border"
+                [ngClass]="{'is-valid':!form.controls.username.errors}" placeholder="Username" type="input"
                 id="username">
-              <span class="input-group-append">
-                <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i class="fas fa-user"></i></div>
-              </span>
             </div>
           </div>
+
           <div class="col-6">
+            <small [ngClass]="{'text-danger':form.controls.password.errors}"
+              for="">{{form.controls.password.errors ? "*Min length 6 characters" : "Password"}}</small>
             <div class="input-group mb-2">
-              <input class="form-control py-2 rounded-0 border-right-0 border" placeholder="Password" type="Password">
-              <span class="input-group-append">
-                <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i class="fas fa-user"></i></div>
-              </span>
+              <input formControlName="password" class="form-control py-2 rounded-0 border" placeholder="Password"
+                type="Password" [ngClass]="{'is-invalid':form.controls.password.errors}">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <small [ngClass]="{'text-danger': exists}" for="">{{exists ? 'Email already in use': 'Email'}} </small>
+            <div class="input-group mb-2">
+              <input formControlName="email" class="form-control py-2 rounded-0 border"
+                [ngClass]="{'is-invalid': exists}" placeholder="email@example.com" type="input" (keyup)="check()">
             </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-12">
-            <div class="input-group mb-2">
-              <input class="form-control py-2 rounded-0 border-right-0 border" placeholder="email@example.com"
-                type="input">
-              <span class="input-group-append">
-                <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i class="fas fa-user"></i></div>
-              </span>
-            </div>
-          </div>
-        </div>
 
-        <div class="row">
-          <div class="col-12">
+          <div class="col-6">
+            <small [ngClass]="{'text-danger':form.controls.phone.errors}"
+              for="">{{form.controls.phone.errors ? 'Required' : 'Phone'}}</small>
             <div class="input-group mb-3">
-              <select class="custom-select rounded-0" id="inputGroupSelect02">
-                <option selected>Role</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <input formControlName="phone" class="form-control py-2 rounded-0 border" placeholder="Phone"
+                type="number">
+            </div>
+          </div>
+
+          <div class="col-6">
+            <small for="">Role</small>
+            <div class="input-group mb-3">
+              <select class="custom-select rounded-0" id="inputGroupSelect02" formControlName="role">
+                <option value="" selected></option>
+                <option value="administrator">Administrator</option>
               </select>
               <div class="input-group-append">
                 <label class="input-group-text rounded-0" for="inputGroupSelect02">Options</label>
               </div>
             </div>
           </div>
+
         </div>
 
       </div>
@@ -143,7 +152,7 @@
       <!-- Modal Footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-sm">Save</button>
+        <button type="button" class="btn btn-sm" [disabled]="!form.valid || exists">Save</button>
       </div>
     </div>
   </div>
