@@ -95,17 +95,17 @@
             <small for="">Username</small>
             <div class="input-group mb-2">
               <input formControlName="username" class="form-control py-2 rounded-0 border"
-                [ngClass]="{'is-valid':!form.controls.username.errors}" placeholder="Username" type="input"
+                [ngClass]="{'is-invalid' : form.controls.username.errors && form.controls.username.touched }" placeholder="Username" type="input"
                 id="username">
             </div>
           </div>
 
           <div class="col-6">
-            <small [ngClass]="{'text-danger':form.controls.password.errors}"
-              for="">{{form.controls.password.errors ? '*Min length 6 characters' : 'Password'}}</small>
+            <small [ngClass]="{'text-danger': form.controls.password.errors && form.controls.password.touched}" for="">{{form.controls.password.errors && form.controls.password.touched ? '*Min length 7 characters' : 'Password'}}</small>
+              <div>{{form.errors}}</div>
             <div class="input-group mb-2">
               <input formControlName="password" class="form-control py-2 rounded-0 border" placeholder="Password"
-                type="Password" [ngClass]="{'is-invalid':form.controls.password.errors}">
+                type="Password" [ngClass]="{'is-invalid':form.controls.password.errors  && form.controls.password.touched}">
             </div>
           </div>
 
@@ -126,6 +126,7 @@
           <div class="col-6">
             <small [ngClass]="{'text-danger':form.controls.phone.errors}"
               for="">{{form.controls.phone.errors ? 'Required' : 'Phone'}}</small>
+
             <div class="input-group mb-3">
               <input formControlName="phone" class="form-control py-2 rounded-0 border" placeholder="Phone"
                 type="number">
@@ -152,7 +153,7 @@
       <!-- Modal Footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-sm" [disabled]="!form.valid || exists">Save</button>
+        <button type="button" class="btn btn-sm" [disabled]="!form.valid || exists"><strong>Save</strong></button>
       </div>
     </div>
   </div>
