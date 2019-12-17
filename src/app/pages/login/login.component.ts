@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     success: false,
     message: 'Provide valid email'
   };
-
+  loading: Boolean = false;
   passwordType: String = "password";
   passwordIcon: String = "far fa-eye-slash";
 
@@ -57,10 +57,13 @@ export class LoginComponent implements OnInit {
   }
 
   public check_email(email) {
+    this.loading = true;
     this.auth.check(email).subscribe(response => {
+      this.loading = false;
       this.email_exists = response as check_email;
       console.log(response['success']);
     }, e => {
+      this.loading = false;
       this.email_exists = e.error as check_email;
       console.log(this.email_exists)
     });

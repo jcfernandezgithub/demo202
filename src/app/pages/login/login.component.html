@@ -13,6 +13,7 @@
           </h6>
 
           <form [formGroup]="form">
+
             <div class="input-group mb-2">
               <input class="form-control py-2 rounded-0 border-right-0 border" (keyup)="check()" formControlName="email"
                 placeholder="example@domain.com" [ngClass]="{ 'is-valid' : email_exists.success}" type="input">
@@ -20,20 +21,28 @@
                 <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i class="fas fa-user"></i></div>
               </span>
             </div>
-            <div class="input-group">
+
+            <div *ngIf="loading" class="spinner-border spinner-border-sm" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+
+            <div *ngIf="email_exists.success" class="input-group">
               <div class="input-group-prepend">
                 <!--<span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>-->
               </div>
-              <input [type]="passwordType" class="form-control py-2 rounded-0 border-right-0 border" formControlName="password"
-                placeholder="Password">
+              <input [type]="passwordType" class="form-control py-2 rounded-0 border-right-0 border"
+                formControlName="password" placeholder="Password">
               <span (click)="hideShowPassword()" class="input-group-append">
-                <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i [class]="passwordIcon"></i></div>
+                <div class="input-group-text rounded-0 border-left-0 bg-transparent"><i [class]="passwordIcon"></i>
+                </div>
               </span>
             </div>
-            <small>{{email_exists.message}}</small>
+
+            <small *ngIf="!email_exists.success">{{email_exists.message}}</small>
 
             <div class="text-right">
-              <button (click)="signin(form.value)" [disabled]="!email_exists.success || !form.valid" type="submit" class="btn pt-0 pb-0"> <strong>Login </strong>
+              <button (click)="signin(form.value)" [disabled]="!email_exists.success || !form.valid" type="submit"
+                class="btn pt-0 pb-0"> <strong>Login </strong>
                 <div class="spinner-border spinner-border-sm" [hidden]="spinner" role="status">
                   <span class="sr-only">Loading...</span>
                 </div>
